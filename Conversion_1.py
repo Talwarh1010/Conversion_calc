@@ -2,6 +2,7 @@
 
 
 from logging import error
+# checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
     
     valid = False
@@ -26,7 +27,7 @@ def num_check(question, low,):
                 
         except ValueError:
             print(problem)
-
+# informs the user about how to use the calculator 
 def instructions():
     statement_generator("Instructions / information" , "=")
     print()
@@ -40,7 +41,7 @@ def instructions():
     print()
     return ""
 
-            
+# makes the heading and ending more pleasing to view
 def statement_generator(text, decoration):
 
     
@@ -58,7 +59,7 @@ def statement_generator(text, decoration):
     
     
     return ""
-
+# converts between time, distances and time
 def conversion_calculator(number):
         print()
         
@@ -88,6 +89,10 @@ def conversion_calculator(number):
                 new1 = number/1
         if unit  == "m":
                 new1 = number *100
+        if unit  == "l":
+                new1 = number *1000
+        if unit  == "ml":
+                new1 = number/1
         
             
             
@@ -135,17 +140,24 @@ def conversion_calculator(number):
         if new == "m":
                 final = new1 / 100
                 print("{}{}   in metres is {:.2f}".format(number,unit,final))
+        if new == "l":
+                final = new1 / 1000
+                print("{}{}   in litres is {:.2f}".format(number,unit,final))
+                
+        if new == "ml":
+                final = new1 / 1
+                print("{}{}   in mililitres is {:.2f}".format(number,unit,final))
 
 
-
+# main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
 first_time = input("Press <enter> to see instructions or press any key then enter to continue ")
 
 
-
+# asks the user if it is their first time using the program and if they need the instructions displayed
 if first_time =="":
     instructions()
-    
+    # puts the code into a loop
 keep_going = ""
 while keep_going =="":
     number = (conversion_calculator(num_check("what is the number? ", low = 1)))
