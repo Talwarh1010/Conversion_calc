@@ -31,9 +31,9 @@ def num_check(question, low,):
 def instructions():
     statement_generator("Instructions / information" , "=")
     print()
-    print("Please choose an integer and what unit it is in")
+    print("Please choose an integer and what unit it is in. When entering the unit, make sure it is the symbol")
     print()
-    print("choose what unit you want to convert this in. Make sure it is an appropiate conversion e.g. not seconds into metres or grams into cm")
+    print("Choose what unit you want to convert this in. Make sure it is an appropiate conversion e.g. not seconds into metres or grams into cm")
     print()
     print("This calculator will convert between distance,time and weight")
     print()
