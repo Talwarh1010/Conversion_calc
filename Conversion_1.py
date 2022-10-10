@@ -76,7 +76,7 @@ def conversion_calculator(number):
         if unit  == "dm":
                 new1 = number * 10
         if unit  == "ft":
-                new1 = number / 30.48
+                new1 = number * 30.48
         if unit  == "kg":
                 new1 == number * 1000
         if unit  == "g":
@@ -119,16 +119,16 @@ def conversion_calculator(number):
                 print("{}{}   in decimeters is {:.2f}".format(number,unit,final))    
                 
         if new == "ft":
-                final = new1*30.4
+                final = new1/30.4
                 print("{}{}  in feet is {:.2f}".format(number,unit,final))
         if new == "g":
                 final = new1/1
                 print("{}{}   in grams is {:.2f}".format(number,unit,final))
         if new == "kg":
-                final = new1 * 1000
+                final = new1 / 1000
                 print("{}{}    in kilograms is {:.2f}".format(number,unit,final))
         if new == "mg":
-                final = new1/1000
+                final = new1 * 1000
                 print("{}{}   in milligrams is {:.2f}".format(number,unit,final))
                 
         if new == "hrs":
