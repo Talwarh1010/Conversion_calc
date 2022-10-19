@@ -1,4 +1,4 @@
-# Ask the user for an amount and unit of measurement (eg: 10 cm)
+
 
 
 from logging import error
@@ -10,11 +10,11 @@ def num_check(question, low,):
         
         problem2 = "Please enter a number that is more than 0"
         problem = "Please enter a number that does not have decimals or letters"
-                                                                        
+        
         try:
         
             # Ask user to enter a number
-            response = int(input(question))
+            response = float(input(question))
 
             # Checks number is more than zero
             if response >= low :
@@ -61,93 +61,54 @@ def statement_generator(text, decoration):
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
+        print()      
         print()
-        
-        print()
-        unit = input(str("what unit is it in?   "))
-        print()
-        print()
-        if unit == "in":
-                new1 = number * 2.54
-        if unit  == "mm":
-                new1 = number/10
-        if unit  == "cm":
-                new1 = number/1
-        if unit  == "dm":
-                new1 = number * 10
-        if unit  == "ft":
-                new1 = number * 30.48
-        if unit  == "kg":
-                new1 == number * 1000
-        if unit  == "g":
-                new1 = number/1
-        if unit  == "mg":
-                new1 = number/1000
-        if unit  =="hrs":
-                new1= number * 3600
-        if unit  == "s":
-                new1 = number/1
-        if unit  == "m":
-                new1 = number *100
-        if unit  == "l":
-                new1 = number *1000
-        if unit  == "ml":
-                new1 = number/1
+        unit = input("what unit is it in?   ")
+        my_dict = {
+            "in":number * 2.54,
+            "mm":number/10,
+            "cm":number/1,
+            "dm": number * 10,
+            "ft":number * 30.48,
+            "kg": number * 1000,
+            "g": number/1,
+            "mg":number/1000,
+            "hrs": number * 3600,
+            "s": number/1,
+            "m": number * 100,
+            "l": number * 1000,
+            "ml": number/1
+            }
+        converter = my_dict[unit]
         
             
+        
+        new_dict = {
+            "in":converter / 2.54,
+            "mm":converter * 10,
+            "cm":converter/1,
+            "dm":converter/ 10,
+            "ft":converter / 30.48,
+            "kg": converter / 1000,
+            "g": converter/1,
+            "mg":converter * 1000,
+            "hrs": converter/ 3600,
+            "s": converter/1,
+            "m": converter / 100,
+            "l": converter/ 1000,
+            "ml": converter/1
+            }
+                
+                
             
             
-            
-                    
-        new = input("what unit do you want to convert this to? e.g. cm, ft,🍗?  ")
-        if new == "in":
-                final = new1 / 2.54
-                print("{}{} in inches is {:.2f}".format(number,unit,final))
-                
-                
-        if new == "cm":
-                final = new1/1
-                print("{}{}in cm is {:.2f}".format(number,unit, final))
-                
-                    
-        if new == "mm":
-                final = new1/10
-                print("{}{} in millimeters is {:.2f}".format(number,unit,final))    
-            
-        if new == "dm":
-                final = new1*10
-                print("{}{}   in decimeters is {:.2f}".format(number,unit,final))    
-                
-        if new == "ft":
-                final = new1/30.4
-                print("{}{}  in feet is {:.2f}".format(number,unit,final))
-        if new == "g":
-                final = new1/1
-                print("{}{}   in grams is {:.2f}".format(number,unit,final))
-        if new == "kg":
-                final = new1 / 1000
-                print("{}{}    in kilograms is {:.2f}".format(number,unit,final))
-        if new == "mg":
-                final = new1 * 1000
-                print("{}{}   in milligrams is {:.2f}".format(number,unit,final))
-                
-        if new == "hrs":
-                final = new1 / 3600
-                print("{}{}   in hours is {:.2f}".format(number,unit,final))
-        if new == "s":
-                final = new1/1
-                print("{}{}   in seconds is {:.2f}".format(number,unit,final))
-        if new == "m":
-                final = new1 / 100
-                print("{}{}   in metres is {:.2f}".format(number,unit,final))
-        if new == "l":
-                final = new1 / 1000
-                print("{}{}   in litres is {:.2f}".format(number,unit,final))
-                
-        if new == "ml":
-                final = new1 / 1
-                print("{}{}   in mililitres is {:.2f}".format(number,unit,final))
-
+        
+        new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
+        final = new_dict[new_unit]
+        #
+        # print(number,unit, " is ",final,new_unit)
+        print("{}{} is {}{}".format(number,unit,final,new_unit))
+               
 
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
@@ -165,8 +126,6 @@ while keep_going =="":
     print()
 
 statement_generator("Thanks for using Conversion calculator", "💝")
-
-
 
 
 
