@@ -2,6 +2,7 @@
 
 
 from logging import error
+from turtle import distance
 # checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
     
@@ -63,6 +64,9 @@ def statement_generator(text, decoration):
 def conversion_calculator(number):
         print()      
         print()
+       
+        
+        
         unit = input("what unit is it in?   ")
         my_dict = {
             "in":number * 2.54,
