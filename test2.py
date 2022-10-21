@@ -2,6 +2,7 @@
 
 
 from logging import error
+from turtle import distance
 # checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
     
@@ -10,11 +11,11 @@ def num_check(question, low,):
         
         problem2 = "Please enter a number that is more than 0"
         problem = "Please enter a number that does not have decimals or letters"
-                                                                        
+        
         try:
         
             # Ask user to enter a number
-            response = (input(question))
+            response = float(input(question))
 
             # Checks number is more than zero
             if response >= low :
@@ -61,33 +62,33 @@ def statement_generator(text, decoration):
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
-        print()
-            
-            
-        
-            
-            
-            
-        
+        print()      
         print()
         unit = input("what unit is it in?   ")
-        my_dict = {
+        distance = {
             "in":number * 2.54,
             "mm":number/10,
             "cm":number/1,
             "dm": number * 10,
             "ft":number * 30.48,
+            "m": number * 100,
+            }
+        weight = {
             "kg": number * 1000,
             "g": number/1,
             "mg":number/1000,
-            "hrs": number * 3600,
-            "s": number/1,
-            "m": number * 100,
-            "l": number * 1000,
+             "l": number * 1000,
             "ml": number/1
             }
-        converter = unit[my_dict]
+        time = {
+            "hrs": number * 3600,
+            "s": number/1,
             
+            }
+        converter = (distance(weight(time[unit])))
+        
+            
+        
         new_dict = {
             "in":converter / 2.54,
             "mm":converter * 10,
@@ -109,50 +110,11 @@ def conversion_calculator(number):
             
         
         new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
-        final = new_unit[new_dict]
-                
-        #if final == "cm":
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-                
-                    
-        #if final == "mm":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-            
-        #if final == "dm":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-                
-        #if final == "ft":
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-                
-        #if final == "g":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-        #if final == "kg":
-            
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-        #if converter == "mg":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-                
-        #if converter == "hrs":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-        #if converter == "s":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-        #if converter == "m":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-        #if converter == "l":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-                
-        #if converter == "ml":
-                
-                print("{}{} is {}{}").format(number),(unit),(final), (new_unit)
-
+        final = new_dict[new_unit]
+        #
+        # print(number,unit, " is ",final,new_unit)
+        print("{}{} is {}{}".format(number,unit,final,new_unit))
+               
 
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
@@ -170,8 +132,6 @@ while keep_going =="":
     print()
 
 statement_generator("Thanks for using Conversion calculator", "💝")
-
-
 
 
 
