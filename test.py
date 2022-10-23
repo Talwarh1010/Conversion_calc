@@ -32,7 +32,7 @@ def num_check(question, low,):
 def instructions():
     statement_generator("Instructions / information" , "=")
     print()
-    print("Please choose an integer and what unit it is in. When entering the unit, make sure it is the symbol")
+    print("Please choose an integer and what unit it is in. When entering the unit, make sure it is the symbol E.g m for meters")
     print()
     print("Choose what unit you want to convert this in. Make sure it is an appropiate conversion e.g. not seconds into metres or grams into cm")
     print()
@@ -43,8 +43,6 @@ def instructions():
     print("Kilograms, grams, miligrams, litres, and millitres")
     print()
     print("Hours and seconds")
-    print()
-    print("When entering units, make sure it is the symbol not the full form. E.g m for meters")
     print()
     print("complete as many calculations as necessary. press <enter> at the end of each calculations or press any key then enter to quit.")
     print()
@@ -163,12 +161,12 @@ def conversion_calculator(number):
                 final = "invalid"
         except KeyError:
             key_error_present = True
-        # checks if they are convering between distance time or weight
+        # checks if they are converting correctly
         if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -2:
             print("Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm")
             print("use VALID units, read the instructions for what units are allowed")
             
-        # otherwise it will output the results
+        # otherwise it will output the proper results
         else:
             print("{}{} is {}{}".format(number,unit,final,new_unit))
             
