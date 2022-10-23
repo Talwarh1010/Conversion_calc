@@ -76,7 +76,7 @@ def conversion_calculator(number):
         # what unit it is in
         unit = (input("what unit is it in?   "))
         # what they want to convert to
-        new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
+        new_unit = input("what unit do you want to convert this to?  e.g. cm, L, g, hrs etc   ")
         
         # python dictionary that converts input into a common metric unit depending on the unit they enter. E.g if they enter inches,
         # then I will convert it into cm, so when they want to convert it to any other metric unit, I can just convert using cm
@@ -166,6 +166,7 @@ def conversion_calculator(number):
         
         if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -2:
             wrong = "Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm \n use VALID units, read the instructions for what units are allowed"
+            print()
             print(wrong)
             print()
         # otherwise it will output the proper results
