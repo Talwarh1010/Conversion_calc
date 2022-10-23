@@ -171,7 +171,7 @@ def conversion_calculator(number):
             print()
         # otherwise it will output the proper results
         else:
-            print("{}{} is {}{}".format(number,unit,final,new_unit))
+            print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
             
             
 
