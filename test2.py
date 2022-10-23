@@ -62,111 +62,61 @@ def statement_generator(text, decoration):
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
+        global unit
+        global my_dict
         print()      
         print()
-        
-        metric = input("What are you converting e.g. distance or weight? ")
-        unit = (input("what unit is it in?   "))
-            
-        
-        new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
+       
         
         
-        
-        distance1 = {
+        unit = input("what unit is it in?   ")
+        my_dict = {
             "in":number * 2.54,
             "mm":number/10,
             "cm":number/1,
             "dm": number * 10,
             "ft":number * 30.48,
-            "m": number * 100,
-            }
-        weight1 = {
             "kg": number * 1000,
             "g": number/1,
             "mg":number/1000,
-             "l": number * 1000,
-            "ml": number/1
-            }
-        time1 = {
             "hrs": number * 3600,
             "s": number/1,
-            
+            "m": number * 100,
+            "l": number * 1000,
+            "ml": number/1
             }
+        converter = my_dict[unit]
         
-        initial_key_error = False
-        converter = -1
-        try: 
-            if metric == "distance":
-                converter = distance1[unit]
-                
-                
-            elif metric == "weight":
-                converter = weight1[unit]
-                
-            elif metric == "time":
-                converter = time1[unit]
-
-            else:
-                initial = "Sus"
-        except KeyError:
-            initial_key_error = True
+            
         
-        distance2 = {
+        new_dict = {
             "in":converter / 2.54,
             "mm":converter * 10,
             "cm":converter/1,
             "dm":converter/ 10,
             "ft":converter / 30.48,
-            "m": converter / 100,
-        }
-        weight2 = {
             "kg": converter / 1000,
             "g": converter/1,
             "mg":converter * 1000,
-            "l": converter/ 1000,
-            "ml": converter/1
-        }
-        time2 = {
             "hrs": converter/ 3600,
             "s": converter/1,
-            
-        }
-        key_error_present = False
-        final = "Not Sus"
-        try: 
-            if metric == "distance" and distance2.get(new_unit):
-                final = distance2[new_unit]
-            
-            elif metric == "weight" and weight2.get(new_unit):
-                final = weight2[new_unit]
+            "m": converter / 100,
+            "l": converter/ 1000,
+            "ml": converter/1
+            }
                 
-            elif metric == "time" and time2.get(new_unit):
-                final = time2[new_unit]
-
                 
-            else:
-                final = "Sus"
-        except KeyError:
-            key_error_present = True
             
-
             
         
-        #new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
-        #final = new_dict[new_unit]
+        new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
+        final = new_dict[new_unit]
         #
         # print(number,unit, " is ",final,new_unit)
-        
-        if key_error_present == True or final == "Sus" or initial_key_error == True or converter == -1:
-            print("lol you thought you could break my code?")
-            print("no you can't")
-               
-        else:
-            print("{}{} is {}{}".format(number,unit,final,new_unit))
-            
+        print("{}{} is {}{}".format(number,unit,final,new_unit))
                
 
+    
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
 first_time = input("Press <enter> to see instructions or press any key then enter to continue ")
@@ -183,6 +133,7 @@ while keep_going =="":
     print()
 
 statement_generator("Thanks for using Conversion calculator", "💝")
+
 
 
 
