@@ -73,7 +73,7 @@ def conversion_calculator(number):
         print()      
         print()
         # ask what converting between
-        metric = input("What are you converting e.g. distance or weight? ")
+        metric = input("What are you converting e.g. distance, time or weight? ")
         # what unit it is in
         unit = (input("what unit is it in?   "))
         # what they want to convert to
@@ -117,7 +117,7 @@ def conversion_calculator(number):
                 converter = time1[unit]
 
             else:
-                initial = "Sus"
+                converter = -2
         except KeyError:
             initial_key_error = True
         # python dictionary that converts value into another unit
@@ -160,8 +160,9 @@ def conversion_calculator(number):
         except KeyError:
             key_error_present = True
         # checks if they are convering between distance time or weight
-        if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -1:
+        if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -2:
             print("Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm")
+            print("use VALID units, read the instructions for what units are allowed")
             
         # otherwise it will output the results
         else:
