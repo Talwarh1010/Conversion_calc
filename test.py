@@ -88,6 +88,8 @@ def conversion_calculator(number):
             "dm": number * 10,
             "ft":number * 30.48,
             "m": number * 100,
+            "km": number * 100000
+
             }
         weight1 = {
             "kg": number * 1000,
@@ -128,6 +130,8 @@ def conversion_calculator(number):
             "dm":converter/ 10,
             "ft":converter / 30.48,
             "m": converter / 100,
+            "km": converter/ 100000
+
         }
         weight2 = {
             "kg": converter / 1000,
