@@ -68,6 +68,7 @@ def statement_generator(text, decoration):
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
+        
         print()      
         print()
         # ask what converting between
@@ -162,10 +163,11 @@ def conversion_calculator(number):
         except KeyError:
             key_error_present = True
         # checks if they are converting correctly
+        
         if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -2:
-            print("Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm")
-            print("use VALID units, read the instructions for what units are allowed")
-            
+            wrong = "Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm \n use VALID units, read the instructions for what units are allowed"
+            print(wrong)
+            print()
         # otherwise it will output the proper results
         else:
             print("{}{} is {}{}".format(number,unit,final,new_unit))
