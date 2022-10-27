@@ -1,13 +1,14 @@
 
 
 
-from logging import error
-from turtle import distance
 # checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
     
+    
     valid = False
     while not valid:
+        
+        
         
         problem2 = "Please enter a number that is more than 0"
         problem = "Please enter a number that does not have  letters"
@@ -68,37 +69,49 @@ def statement_generator(text, decoration):
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
+        
         print()      
         print()
         # ask what converting between
-        metric = input("What are you converting e.g. distance, time or weight? ")
+        valid = False
+        while not valid:
+            metric = input(str("What are you converting e.g. distance, time or weight? ").lower())
+            if metric in ["distance", "d", "time", "t", "weight", "w"]:
+                break
+            else:
+                print("Please enter a valid conversion type")
+                
+                
+                
+            
         # what unit it is in
-        unit = (input("what unit is it in?   "))
+        unit = input("what unit is it in?   ").lower()
         # what they want to convert to
-        new_unit = input("what unit do you want to convert this to, e.g. cm, L, g, hrs etc")
+        new_unit = input("what unit do you want to convert this to?  e.g. cm, l, g, hrs etc   ").lower()
         
         # python dictionary that converts input into a common metric unit depending on the unit they enter. E.g if they enter inches,
         # then I will convert it into cm, so when they want to convert it to any other metric unit, I can just convert using cm
         distance1 = {
             "in":number * 2.54,
-            "mm":number/10,
-            "cm":number/1,
-            "dm": number * 10,
-            "ft":number * 30.48,
-            "m": number * 100,
-            "km": number * 100000
+            "IN":number * 2.54,
+            "mm" :number/10,
+            "cm" :number/1,
+            "dm" : number * 10,
+            "ft" :number * 30.48,
+            "m" : number * 100,
+            "km" : number * 100000
 
             }
         weight1 = {
-            "kg": number * 1000,
-            "g": number/1,
-            "mg":number/1000,
-             "l": number * 1000,
-            "ml": number/1
+            "kg" : number * 1000,
+            "g" : number/1,
+            "mg" :number/1000,
+            "l" : number * 1000,
+            "ml" : number/1
             }
         time1 = {
-            "hrs": number * 3600,
-            "s": number/1,
+            "hrs" : number * 3600,
+            "s" : number/1,
             
             }
         
@@ -106,23 +119,25 @@ def conversion_calculator(number):
         converter = -1
         # uses the dictionary to convert
         try: 
-            if metric == "distance":
+            if metric == "distance" or metric == "d":
                 converter = distance1[unit]
                 
                 
-            elif metric == "weight":
+            elif metric == "weight" or metric == "w":
                 converter = weight1[unit]
                 
-            elif metric == "time":
+            elif metric == "time" or metric == "t":
                 converter = time1[unit]
 
             else:
                 converter = -2
+                
         except KeyError:
             initial_key_error = True
         # python dictionary that converts value into another unit
         distance2 = {
-            "in":converter / 2.54,
+            "in" :converter / 2.54,
+            "IN" :converter / 2.54,
             "mm":converter * 10,
             "cm":converter/1,
             "dm":converter/ 10,
@@ -132,28 +147,28 @@ def conversion_calculator(number):
 
         }
         weight2 = {
-            "kg": converter / 1000,
-            "g": converter/1,
-            "mg":converter * 1000,
-            "l": converter/ 1000,
-            "ml": converter/1
+            "kg"  : converter / 1000,
+            "g"  : converter/1,
+            "mg" :converter * 1000,
+            "l"  : converter/ 1000,
+            "ml"  : converter/1
         }
         time2 = {
-            "hrs": converter/ 3600,
-            "s": converter/1,
+            "hrs" : converter/ 3600,
+            "s" : converter/1,
             
         }
         key_error_present = False
         final = "Not invalid"
         # uses the dictionary to convert
         try: 
-            if metric == "distance" and distance2.get(new_unit):
+            if metric == "distance" or metric == "d" and distance2.get(new_unit):
                 final = distance2[new_unit]
             
-            elif metric == "weight" and weight2.get(new_unit):
+            elif metric == "weight" or metric == "w" and weight2.get(new_unit):
                 final = weight2[new_unit]
                 
-            elif metric == "time" and time2.get(new_unit):
+            elif metric == "time" or metric == "t" and time2.get(new_unit):
                 final = time2[new_unit]
 
                 
@@ -162,13 +177,15 @@ def conversion_calculator(number):
         except KeyError:
             key_error_present = True
         # checks if they are converting correctly
+        
         if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -2:
-            print("Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm")
-            print("use VALID units, read the instructions for what units are allowed")
-            
+            wrong = "Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm \n use VALID units, read the instructions for what units are allowed"
+            print()
+            print(wrong)
+            print()
         # otherwise it will output the proper results
         else:
-            print("{}{} is {}{}".format(number,unit,final,new_unit))
+            print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
             
             
 
