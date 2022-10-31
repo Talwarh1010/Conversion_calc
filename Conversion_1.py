@@ -1,10 +1,9 @@
 
 
 
-from logging import error
-from turtle import distance
 # checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
+    
     
     valid = False
     while not valid:
@@ -50,9 +49,6 @@ def instructions():
 
 # makes the heading and ending more pleasing to view
 def statement_generator(text, decoration):
-
-    
-    
     
     # Make string with five characters
     ends = decoration * 5
@@ -68,62 +64,103 @@ def statement_generator(text, decoration):
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
-        
         print()      
         print()
         # ask what converting between
-        metric = input("What are you converting e.g. distance, time or weight? ")
+        valid = False
+        while not valid:
+            distance_list = ["km", "m", "dm" "ft", "in", "mm", "cm"]
+            weight_list = ["kg", "g", "mg"]
+            time_list = ["hrs", "s"]
+            volume_list = ["l", "ml"]
+            
+            metric = input(str("What are you converting e.g. distance, time, weight or volume? ").lower())
+            if metric in ["distance", "d", "time", "t", "weight", "w", "volume", "v"]:
+                break
+            else:
+                print()
+                print("Please enter a valid conversion type")
+                print()
+                
         # what unit it is in
-        unit = (input("what unit is it in?   "))
+        
+        valid1 = False
+        while not valid1:
+            unit = input("what unit is it in?   ").lower()
+            if metric in ["distance", "d"] and unit in distance_list:
+                break
+            elif metric in ["weight", "w"] and  unit in weight_list:
+                break
+            elif metric in ["time", "t"] and unit in time_list:
+                break
+            elif metric in ["volume", "v"] and  unit in volume_list:
+                break
+            
+            else :
+                print()
+                print("please input a valid unit to convert from")
+                print()
+                
         # what they want to convert to
-        new_unit = input("what unit do you want to convert this to?  e.g. cm, L, g, hrs etc   ")
+        valid1 = False
+        while not valid1:
+            new_unit = input("what unit do you want to convert this to?  e.g. cm, l, g, hrs etc   ").lower()
+            if metric in ["distance", "d"] and unit in distance_list and new_unit in distance_list:
+                break
+            elif metric in ["weight", "w"] and  unit in weight_list and new_unit in weight_list:
+                break
+            elif metric in ["time", "t"] and unit in time_list and new_unit in time_list:
+                break
+            elif metric in ["volume", "v"] and  unit in volume_list and new_unit in volume_list:
+                break
+            
+            else :
+                print()
+                print("please input a valid unit to convert to")
+                print()
         
         # python dictionary that converts input into a common metric unit depending on the unit they enter. E.g if they enter inches,
         # then I will convert it into cm, so when they want to convert it to any other metric unit, I can just convert using cm
         distance1 = {
-            "in":number * 2.54,
-            "mm":number/10,
-            "cm":number/1,
-            "dm": number * 10,
-            "ft":number * 30.48,
-            "m": number * 100,
-            "km": number * 100000
-
-            }
+                    "in":number * 2.54,
+                    "mm" :number/10,
+                    "cm" :number/1,
+                    "dm" : number * 10,
+                    "ft" :number * 30.48,
+                    "m" : number * 100,
+                    "km" : number * 100000
+                    }
         weight1 = {
-            "kg": number * 1000,
-            "g": number/1,
-            "mg":number/1000,
-             "l": number * 1000,
-            "ml": number/1
-            }
+                    "kg" : number * 1000,
+                    "g" : number/1,
+                    "mg" :number/1000,
+                    
+                    }
         time1 = {
-            "hrs": number * 3600,
-            "s": number/1,
-            
-            }
-        
-        initial_key_error = False
-        converter = -1
+                    "hrs" : number * 3600,
+                    "s" : number/1,
+                    }
+        volume1 = {
+                    "l": number * 1000,
+                    "ml" : number / 1
+                    }
         # uses the dictionary to convert
-        try: 
-            if metric == "distance":
+        if metric == "distance" or metric == "d":
                 converter = distance1[unit]
                 
                 
-            elif metric == "weight":
+        elif metric == "weight" or metric == "w":
                 converter = weight1[unit]
                 
-            elif metric == "time":
+        elif metric == "time" or metric == "t":
                 converter = time1[unit]
-
-            else:
-                converter = -2
-        except KeyError:
-            initial_key_error = True
+                
+        elif metric =="volume" or metric == "v":
+                converter = volume1[unit]
+                
         # python dictionary that converts value into another unit
         distance2 = {
-            "in":converter / 2.54,
+            "in" :converter / 2.54,
             "mm":converter * 10,
             "cm":converter/1,
             "dm":converter/ 10,
@@ -133,49 +170,35 @@ def conversion_calculator(number):
 
         }
         weight2 = {
-            "kg": converter / 1000,
-            "g": converter/1,
-            "mg":converter * 1000,
-            "l": converter/ 1000,
-            "ml": converter/1
+            "kg"  : converter / 1000,
+            "g"  : converter/1,
+            "mg" :converter * 1000,
+            
         }
         time2 = {
-            "hrs": converter/ 3600,
-            "s": converter/1,
-            
+            "hrs" : converter/ 3600,
+            "s" : converter/1,
         }
-        key_error_present = False
-        final = "Not invalid"
+        volume2  = {
+            "l"  : converter/ 1000,
+            "ml"  : converter/1
+        }
         # uses the dictionary to convert
-        try: 
-            if metric == "distance" and distance2.get(new_unit):
+        
+        if metric == "distance" or metric == "d" and distance2.get(new_unit):
                 final = distance2[new_unit]
             
-            elif metric == "weight" and weight2.get(new_unit):
+        elif metric == "weight" or metric == "w" and weight2.get(new_unit):
                 final = weight2[new_unit]
                 
-            elif metric == "time" and time2.get(new_unit):
+        elif metric == "time" or metric == "t" and time2.get(new_unit):
                 final = time2[new_unit]
-
                 
-            else:
-                final = "invalid"
-        except KeyError:
-            key_error_present = True
-        # checks if they are converting correctly
-        
-        if key_error_present == True or final == "invalid" or initial_key_error == True or converter == -2:
-            wrong = "Please don't convert between distance, time and weight. E.g. I want to convert between weight, but you enter cm \n use VALID units, read the instructions for what units are allowed"
-            print()
-            print(wrong)
-            print()
-        # otherwise it will output the proper results
-        else:
-            print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
-            
-            
+        elif metric == "volume" or metric == "v" and volume2.get(new_unit):
+                final = volume2[new_unit]
+                
+        print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
 
-   
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
 first_time = input("Press <enter> to see instructions or press any key then enter to continue ")
