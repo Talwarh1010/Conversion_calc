@@ -14,7 +14,7 @@ def num_check(question, low,):
             response = float(input(question))
 
             # Checks number is more than zero
-            if response >= low :
+            if response > low :
                 return response
 
             # Outputs error if input is invalid
@@ -148,7 +148,7 @@ if first_time =="":
     # puts the code into a loop
 keep_going = ""
 while keep_going =="":
-    number = (conversion_calculator(num_check("what is the number? ", low = 1)))
+    number = (conversion_calculator(num_check("what is the number? ", low = 0)))
     keep_going = input("press enter to continue or press any key then enter to quit")
     print()
 
