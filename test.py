@@ -142,6 +142,7 @@ def conversion_calculator(number):
         # what they want to convert to and converts to the result
         valid1 = False
         while not valid1:
+            print()
             new_unit = input("what unit do you want to convert this to?  e.g. cm, l, g, hrs etc   ").lower()
             if  unit in distance_list and new_unit in distance_list:
                 final = distance2[new_unit]
