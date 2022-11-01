@@ -1,6 +1,3 @@
-
-
-
 # checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
     
@@ -159,12 +156,9 @@ def conversion_calculator(number):
                 final = volume2[new_unit]
                 break
             else :
-                print()
-                print("please input a valid unit to convert to")
-                print()
-        
+                    print("please imput a valid unit to convert to")
+                    
         print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
-
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
 first_time = input("Press <enter> to see instructions or press any key then enter to continue ")
