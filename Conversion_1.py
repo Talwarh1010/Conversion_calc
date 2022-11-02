@@ -1,9 +1,5 @@
-
-
-
 # checks if integer is more than a certain value and makes sure there isn't any letters in the number
 def num_check(question, low,):
-    
     
     valid = False
     while not valid:
@@ -17,7 +13,7 @@ def num_check(question, low,):
             response = float(input(question))
 
             # Checks number is more than zero
-            if response >= low :
+            if response > low :
                 return response
 
             # Outputs error if input is invalid
@@ -66,139 +62,64 @@ def statement_generator(text, decoration):
 def conversion_calculator(number):
         print()      
         print()
-        # ask what converting between
-        valid = False
-        while not valid:
-            distance_list = ["km", "m", "dm" "ft", "in", "mm", "cm"]
-            weight_list = ["kg", "g", "mg"]
-            time_list = ["hrs", "s"]
-            volume_list = ["l", "ml"]
-            
-            metric = input(str("What are you converting e.g. distance, time, weight or volume? ").lower())
-            if metric in ["distance", "d", "time", "t", "weight", "w", "volume", "v"]:
-                break
-            else:
-                print()
-                print("Please enter a valid conversion type")
-                print()
-                
-        # what unit it is in
-        
+        # dictionary
+        distance1 = {
+                    "in": 2.54,
+                    "mm" :10,
+                    "cm" :1,
+                    "dm" :  10,
+                    "ft" : 30.48,
+                    "m" : 100,
+                    "km" :  100000
+                    }
+        weight1 = {
+                    "kg" :  1000,
+                    "g" : 1,
+                    "mg" :1000,
+                    }
+        time1 = {
+                    "hrs" : 3600,
+                    "s" : 1,
+                    }
+        volume1 = {
+                    "l": 1000,
+                    "ml" : 1
+                    }
+        # combined dictionary
+        combined_unit = distance1  | weight1  | time1  |  volume1
+    
+        # what unit it is in, and converts it into the common unit
         valid1 = False
         while not valid1:
             unit = input("what unit is it in?   ").lower()
-            if metric in ["distance", "d"] and unit in distance_list:
+            if unit in combined_unit:
+                converter = number * combined_unit[unit]
                 break
-            elif metric in ["weight", "w"] and  unit in weight_list:
-                break
-            elif metric in ["time", "t"] and unit in time_list:
-                break
-            elif metric in ["volume", "v"] and  unit in volume_list:
-                break
-            
-            else :
-                print()
-                print("please input a valid unit to convert from")
-                print()
-                
-        # what they want to convert to
+            else:
+                print("please use a valid unit to convert from")
+        # what unit the user wants to convert to is converted using dictionaries. Also checks if user does not try to convert between conversion types/
         valid1 = False
         while not valid1:
+            print()
             new_unit = input("what unit do you want to convert this to?  e.g. cm, l, g, hrs etc   ").lower()
-            if metric in ["distance", "d"] and unit in distance_list and new_unit in distance_list:
+            if  unit in distance1 and new_unit in distance1:
+                final = converter / distance1[new_unit]
                 break
-            elif metric in ["weight", "w"] and  unit in weight_list and new_unit in weight_list:
+            elif   unit in weight1 and new_unit in weight1:
+                final =  converter / weight1[new_unit]
                 break
-            elif metric in ["time", "t"] and unit in time_list and new_unit in time_list:
+            elif  unit in time1 and new_unit in time1:
+                final =  converter / time1[new_unit]
                 break
-            elif metric in ["volume", "v"] and  unit in volume_list and new_unit in volume_list:
+            elif   unit in volume1 and new_unit in volume1:
+                final =  converter / volume1[new_unit]
                 break
-            
             else :
-                print()
-                print("please input a valid unit to convert to")
-                print()
-        
-        # python dictionary that converts input into a common metric unit depending on the unit they enter. E.g if they enter inches,
-        # then I will convert it into cm, so when they want to convert it to any other metric unit, I can just convert using cm
-        distance1 = {
-                    "in":number * 2.54,
-                    "mm" :number/10,
-                    "cm" :number/1,
-                    "dm" : number * 10,
-                    "ft" :number * 30.48,
-                    "m" : number * 100,
-                    "km" : number * 100000
-                    }
-        weight1 = {
-                    "kg" : number * 1000,
-                    "g" : number/1,
-                    "mg" :number/1000,
+                    print("please imput a valid unit to convert to")
+            
+        # prints results
                     
-                    }
-        time1 = {
-                    "hrs" : number * 3600,
-                    "s" : number/1,
-                    }
-        volume1 = {
-                    "l": number * 1000,
-                    "ml" : number / 1
-                    }
-        # uses the dictionary to convert
-        if metric == "distance" or metric == "d":
-                converter = distance1[unit]
-                
-                
-        elif metric == "weight" or metric == "w":
-                converter = weight1[unit]
-                
-        elif metric == "time" or metric == "t":
-                converter = time1[unit]
-                
-        elif metric =="volume" or metric == "v":
-                converter = volume1[unit]
-                
-        # python dictionary that converts value into another unit
-        distance2 = {
-            "in" :converter / 2.54,
-            "mm":converter * 10,
-            "cm":converter/1,
-            "dm":converter/ 10,
-            "ft":converter / 30.48,
-            "m": converter / 100,
-            "km": converter/ 100000
-
-        }
-        weight2 = {
-            "kg"  : converter / 1000,
-            "g"  : converter/1,
-            "mg" :converter * 1000,
-            
-        }
-        time2 = {
-            "hrs" : converter/ 3600,
-            "s" : converter/1,
-        }
-        volume2  = {
-            "l"  : converter/ 1000,
-            "ml"  : converter/1
-        }
-        # uses the dictionary to convert
-        
-        if metric == "distance" or metric == "d" and distance2.get(new_unit):
-                final = distance2[new_unit]
-            
-        elif metric == "weight" or metric == "w" and weight2.get(new_unit):
-                final = weight2[new_unit]
-                
-        elif metric == "time" or metric == "t" and time2.get(new_unit):
-                final = time2[new_unit]
-                
-        elif metric == "volume" or metric == "v" and volume2.get(new_unit):
-                final = volume2[new_unit]
-                
         print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
-
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
 first_time = input("Press <enter> to see instructions or press any key then enter to continue ")
@@ -210,13 +131,11 @@ if first_time =="":
     # puts the code into a loop
 keep_going = ""
 while keep_going =="":
-    number = (conversion_calculator(num_check("what is the number? ", low = 1)))
+    number = (conversion_calculator(num_check("what is the number? ", low = 0)))
     keep_going = input("press enter to continue or press any key then enter to quit")
     print()
 
 statement_generator("Thanks for using Conversion calculator", "💝")
-
-
 
 
 
