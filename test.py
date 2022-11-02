@@ -14,7 +14,7 @@ def num_check(question, low,):
             response = float(input(question))
 
             # Checks number is more than zero
-            if response >= low :
+            if response > low :
                 return response
 
             # Outputs error if input is invalid
@@ -65,27 +65,27 @@ def conversion_calculator(number):
         print()
         # dictionary
         distance1 = {
-                    "in":number * 2.54,
-                    "mm" :number/10,
-                    "cm" :number/1,
-                    "dm" : number * 10,
-                    "ft" :number * 30.48,
-                    "m" : number * 100,
-                    "km" : number * 100000
+                    "in": 2.54,
+                    "mm" :10,
+                    "cm" :1,
+                    "dm" :  10,
+                    "ft" : 30.48,
+                    "m" : 100,
+                    "km" :  100000
                     }
         weight1 = {
-                    "kg" : number * 1000,
-                    "g" : number/1,
-                    "mg" :number/1000,
+                    "kg" :  1000,
+                    "g" : 1,
+                    "mg" :1000,
                     
                     }
         time1 = {
-                    "hrs" : number * 3600,
-                    "s" : number/1,
+                    "hrs" : 3600,
+                    "s" : 1,
                     }
         volume1 = {
-                    "l": number * 1000,
-                    "ml" : number / 1
+                    "l": 1000,
+                    "ml" : 1
                     }
         # list of valid units
         distance_list = ["km", "m", "dm" "ft", "in", "mm", "cm"]
@@ -98,17 +98,17 @@ def conversion_calculator(number):
         while not valid1:
             unit = input("what unit is it in?   ").lower()
             if unit in distance_list:
-                converter = distance1[unit]
+                converter = number * distance1[unit]
                 break
             elif  unit in weight_list:
-                converter = weight1[unit]
+                converter = number *  weight1[unit]
                 
                 break
             elif  unit in time_list:
-                converter = time1[unit]
+                converter = number * time1[unit]
                 break
             elif   unit in volume_list:
-                converter = volume1[unit]
+                converter = number * volume1[unit]
                 break
             
             else :
@@ -116,45 +116,22 @@ def conversion_calculator(number):
                 print("please input a valid unit to convert from")
                 print()
                 
-        distance2 = {
-            "in" :converter / 2.54,
-            "mm":converter * 10,
-            "cm":converter/1,
-            "dm":converter/ 10,
-            "ft":converter / 30.48,
-            "m": converter / 100,
-            "km": converter/ 100000
-        }
-        weight2 = {
-            "kg"  : converter / 1000,
-            "g"  : converter/1,
-            "mg" :converter * 1000,
-            
-        }
-        time2 = {
-            "hrs" : converter/ 3600,
-            "s" : converter/1,
-        }
-        volume2  = {
-            "l"  : converter/ 1000,
-            "ml"  : converter/1
-        }
-        # what they want to convert to and converts to the result
+        # what they want to convert to and converts to the result and checks if user inputs a valid unit
         valid1 = False
         while not valid1:
             print()
             new_unit = input("what unit do you want to convert this to?  e.g. cm, l, g, hrs etc   ").lower()
             if  unit in distance_list and new_unit in distance_list:
-                final = distance2[new_unit]
+                final = converter / distance1[new_unit]
                 break
             elif   unit in weight_list and new_unit in weight_list:
-                final = weight2[new_unit]
+                final =  converter / weight1[new_unit]
                 break
             elif  unit in time_list and new_unit in time_list:
-                final = time2[new_unit]
+                final =  converter / time1[new_unit]
                 break
             elif   unit in volume_list and new_unit in volume_list:
-                final = volume2[new_unit]
+                final =  converter / volume1[new_unit]
                 break
             else :
                     print("please imput a valid unit to convert to")
@@ -171,13 +148,11 @@ if first_time =="":
     # puts the code into a loop
 keep_going = ""
 while keep_going =="":
-    number = (conversion_calculator(num_check("what is the number? ", low = 1)))
+    number = (conversion_calculator(num_check("what is the number? ", low = 0)))
     keep_going = input("press enter to continue or press any key then enter to quit")
     print()
 
 statement_generator("Thanks for using Conversion calculator", "💝")
-
-
 
 
 
