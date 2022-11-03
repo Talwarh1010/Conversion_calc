@@ -55,8 +55,6 @@ def statement_generator(text, decoration):
     print()
     print(statement)
     print()
-    
-    
     return ""
 # converts between time, distances and time
 def conversion_calculator(number):
