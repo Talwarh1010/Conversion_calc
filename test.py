@@ -127,7 +127,7 @@ def conversion_calculator(number):
                     print("please imput a valid unit to convert to")
         
         # prints results
-        print("{}{} is {:.2f}{}".format(number,unit,final,new_unit))
+        print("{}{} is {:.3f}{}".format(number,unit,final,new_unit))
 # main routine
 statement_generator("WELCOME TO CONVERSION CALCULATOR", "🌟" )
 first_time = input("Press <enter> to see instructions or press any key then enter to continue ")
